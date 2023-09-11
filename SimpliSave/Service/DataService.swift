@@ -1,9 +1,7 @@
 //
 //  DataService.swift
 //  SimpliSave
-//
-//  Created by DA MAC M1 126 on 2023/08/07.
-//
+
 
 import Foundation
 import UIKit
@@ -19,39 +17,16 @@ enum NetworkError: Error {
 class TransactionService {
     private var transactions: [TransactionElement] = []
     
-    //Sercive that fetches transactions data 07/08/2023 Shahiel
-    //Updated and intergrated with the API 14/08/2023 Shahiel
-    
-//    func fetchDataFromJSON(completion: @escaping ([TransactionElement]?) -> Void) {
-//        if let fileURL = Bundle.main.path(forResource: "dataT", ofType: "json") {
-//            //print(fileURL)
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: fileURL))
-//                //print(data)
-//                let decodedData = try JSONDecoder().decode([TransactionElement].self, from: data)
-//                //print(decodedData)
-//                completion(decodedData)
-//            } catch {
-//
-//                print("Error parsing JSON: \(error)")
-//                completion(nil)
-//            }
-//        } else {
-//            print("Unable to find the JSON file.")
-//            completion(nil)
-//        }
-//    }
-    
     func fetchDataFromJSON(completion: @escaping ([TransactionElement]?) -> Void) {
         if let fileURL = URL(string: "https://simplisave.software/api/v1/transactions/transactions") {
            let get = URLSession.shared.dataTask(with: fileURL) { (data, response, error) in
-                //print(data)
+                print(data)
                 if let error = error {
                     print(error.localizedDescription)
-                    //print("error.localizedDescription")
+                    print("error.localizedDescription")
                     completion(nil)
                 } else if let data = data {
-                    //print(data)
+                    print(data)
 
                     do {
                         let decodedData = try JSONDecoder().decode([TransactionElement].self, from: data)
@@ -72,41 +47,20 @@ class TransactionService {
 
 class BudgetService {
     
-    //Sercive that fetches the Budget data from 07/08/2023 Shahiel
-//    func fetchBudgetData(completion: @escaping ([Budget]?) -> Void) {
-//        if let fileURL = Bundle.main.path(forResource: "dataB", ofType: "json") {
-//            //print(fileURL)
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: fileURL))
-//                //print(data)
-//                let decodedData = try JSONDecoder().decode([Budget].self, from: data)
-//                //print(decodedData)
-//                completion(decodedData)
-//            } catch {
-//
-//                print("Error parsing JSON: \(error)")
-//                completion(nil)
-//            }
-//        } else {
-//            print("Unable to find the JSON file.")
-//            completion(nil)
-//        }
-//    }
-    
+    //Sercive that fetches the Budget data
     func fetchBudgetData(completion: @escaping (Budget?) -> Void) {
         if let fileURL = URL(string: "https://simplisave.software/api/v1/budget/details") {
            let get = URLSession.shared.dataTask(with: fileURL) { (data, response, error) in
-                //print(data)
+//                print(data)
                 if let error = error {
                     print(error.localizedDescription)
-                    //print("error.localizedDescription")
                     completion(nil)
                 } else if let data = data {
-                    //print(data)
+                    print(data)
 
                     do {
                         let decodedData = try JSONDecoder().decode(Budget.self, from: data)
-                       // print(decodedData)
+                        print(decodedData)
                         completion(decodedData)
                     } catch {
                         print("Error parsing JSON: \(error)")
@@ -161,65 +115,8 @@ class BudgetService {
         
     }
     
-    //MARK: - Sercive that performs a delete on a specific budegts 07/08/2023 Shahiel
-//    func removeTransactionFromJSON(ToRemove: Budget) {
-//        if let fileURL = Bundle.main.url(forResource: "dataB", withExtension: "json") {
-//            do {
-//                var data = try Data(contentsOf: fileURL)
-//                var decodedData = try JSONDecoder().decode([Budget].self, from: data)
-//
-//                decodedData.removeAll { $0 == ToRemove }
-//
-//                let updatedData = try JSONEncoder().encode(decodedData)
-//
-//                try updatedData.write(to: fileURL)
-//                print("Data updated and written to \(fileURL)")
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        } else {
-//            print("Unable to find the JSON file.")
-//        }
-//    }
     
-    //MARK: - Sercive that performs a add for a budegts  08/08/2023 Shahiel
-//    func addToJson(ToAdd: Budget){
-//        if let fileURL = Bundle.main.url(forResource: "dataB", withExtension: "json"){
-//            do{
-//                let data = try Data(contentsOf: fileURL)
-//
-//                var decodedData = try JSONDecoder().decode([Budget].self, from: data)
-//
-//                var new = ToAdd
-//
-//                if ToAdd.progressAmount == ToAdd.amountSet {
-//                    new.status = "Complete"
-//                }
-//
-//                if ToAdd.progressAmount < ToAdd.amountSet {
-//                    new.status = "In Progress"
-//                }
-//
-//                if ToAdd.progressAmount > ToAdd.amountSet {
-//                    new.status = "Over Budget"
-//                }
-//
-//                if ToAdd.progressAmount == 0 {
-//                    new.status = "Not Started"
-//                }
-//
-//                decodedData.append(new)
-//
-//                let updatedData = try JSONEncoder().encode(decodedData)
-//
-//                try updatedData.write(to: fileURL)
-//                print("Data updated and written to \(fileURL)")
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        }
-//    }
-    
+    //MARK: - Sercive that performs a delete on a specific budegts
     func delete(id: Int)  {
         
         var request = URLRequest(url:URL(string: "https://simplisave.software/api/v1/budget/\(id)")!)
@@ -244,7 +141,7 @@ class BudgetService {
         }.resume()
     }
 
-    
+    //function that performs on budget
     func addToJson(amount: Int, type: String) {
         // URL of the API endpoint
         var request = URLRequest(url:URL(string: "https://simplisave.software/api/v1/budget/creation")!)
@@ -279,132 +176,10 @@ class BudgetService {
         }.resume()
     }
     
-    
-//    let url = URL(string: "https://simplisave.software/api/v1/budget/creation")!
-//
-//    do {
-//        // Convert data to JSON format
-//        let requestData = try JSONSerialization.data(withJSONObject: Budget.self, options: [])
-//
-//        // Create a URLRequest
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.httpBody = requestData
-//
-//
-//        // Create a URLSession task
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            if let error = error {
-//                print("Error: \(error)")
-//                return
-//            }
-//
-//            if let data = data {
-//                // Process the response data
-//                if let responseString = String(data: data, encoding: .utf8) {
-//                    print("Response: \(responseString)")
-//                }
-//            }
-//        }
-//
-//        // Start the task
-//        task.resume()
-//
-//    } catch {
-//        print("JSON serialization error: \(error)")
-//    }
-    
-    //Sercive that performs a update on a specific budegt  09/08/2023 Shahiel
-//    func updateJson(ToUpdate: Budget, progress: Int, index: IndexPath) {
-//        if let fileURL = Bundle.main.url(forResource: "dataB", withExtension: "json") {
-//            do {
-//                let data = try Data(contentsOf: fileURL)
-//
-//                var decodedData = try JSONDecoder().decode([Budget].self, from: data)
-//
-////                let new = SimpliSave.Budget(
-////                    transactionType: ToUpdate.transactionType,
-////                    amountBudgeted: ToUpdate.amountBudgeted,
-////                    progress: ToUpdate.progress,
-////                    status: ToUpdate.status
-////                )
-//
-//                var toChange = decodedData[index.row]
-//                //print(toChange)
-//                //print(decodedData)
-//                if ToUpdate.progressAmount == ToUpdate.amountSet {
-//                    toChange.status = "Complete"
-//                }
-//
-//                if ToUpdate.progressAmount < ToUpdate.amountSet {
-//                    toChange.status = "In Progress"
-//                }
-//
-//                if ToUpdate.progressAmount > ToUpdate.amountSet {
-//                    toChange.status = "Over Budget"
-//                }
-//
-//                if ToUpdate.progressAmount == 0 {
-//                    toChange.status = "Not Started"
-//                }
-//
-//                toChange.progressAmount = ToUpdate.progressAmount
-//
-//               //print(toChange)
-//                decodedData[index.row] = toChange
-//                //print(decodedData)
-//                let updatedData = try JSONEncoder().encode(decodedData)
-//
-//                try updatedData.write(to: fileURL)
-//                print("Data updated and written to \(fileURL)")
-//
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        }
-//    }
 }
 
 class DashService {
     
-    //Sercive that fetches budget data for the dashboard and adds it to the dashboard json 10/08/2023 Shahiel
-//    func fetchAddData() {
-//    var addData:[DashBudget] = []
-//        if let fileURL = Bundle.main.url(forResource: "dataB", withExtension: "json") {
-//            do {
-//                let data = try Data(contentsOf: fileURL)
-//
-//                var decodedData = try JSONDecoder().decode([Budget].self, from: data)
-//
-//                for index in 0..<decodedData.count {
-//                    let element = decodedData[index]
-//                    let perctentage = Double(element.progressAmount) * 100.0 / 5000.00
-//
-//                    var new = SimpliSave.DashBudget(
-//                        transactionType: element.transactionsType,
-//                        amountBudgeted: element.amountSet,
-//                        progress: Double(element.progressAmount),
-//                        status: element.status,
-//                        percentage: perctentage
-//                    )
-//                    addData.append(new)
-//                }
-//                let updatedData = try JSONEncoder().encode(addData)
-//
-//                if let file2URL = Bundle.main.url(forResource: "dataD", withExtension: "json"){
-//                    do {
-//                        try updatedData.write(to: file2URL)
-//                        //print("Data updated and written to \(file2URL)")
-//                    } catch {
-//                        print("Error parsing JSON: \(error)")
-//                    }
-//                }
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        }
-//    }
     
     func fetchdashboardData(completion: @escaping (DashBudget?) -> Void) {
         if let fileURL = URL(string: "https://simplisave.software/api/v1/budget/details") {
@@ -412,14 +187,14 @@ class DashService {
                 //print(data)
                 if let error = error {
                     print(error.localizedDescription)
-                    //print("error.localizedDescription")
+                    print("error.localizedDescription")
                     completion(nil)
                 } else if let data = data {
-                    //print(data)
+                    print(data)
 
                     do {
                         let decodedData = try JSONDecoder().decode(DashBudget.self, from: data)
-                       // print(decodedData)
+                        print(decodedData)
                         completion(decodedData)
                     } catch {
                         print("Error parsing JSON: \(error)")
@@ -433,76 +208,11 @@ class DashService {
         }
     }
     
-    
-    //Sercive that fetches data from the dashboard json that was previously added 10/08/2023 Shahiel
-//    func fetchdashboardData(completion: @escaping ([DashBudget]?) -> Void) {
-//       // fetchAddData()
-//        if let fileURL = Bundle.main.path(forResource: "dataD", ofType: "json") {
-//            //print(fileURL)
-//            do {
-//                let data = try Data(contentsOf: URL(fileURLWithPath: fileURL))
-//                //print(data)
-//                let decodedData = try JSONDecoder().decode([DashBudget].self, from: data)
-//                //print(decodedData)
-//                completion(decodedData)
-//            } catch {
-//                
-//                print("Error parsing JSON: \(error)")
-//                completion(nil)
-//            }
-//        } else {
-//            print("Unable to find the JSON file.")
-//            completion(nil)
-//        }
-//    }
 }
 
 
 class SavingsService {
     
-    //Sercive that fetches data from the savings json 14/08/2023 Shahiel
-    //    func fetchSavingsData(completion: @escaping (Savings?) -> Void){
-    //        if let fileURL = Bundle.main.path(forResource: "dataS", ofType: "json") {
-    //            do {
-    //
-    //                let decoder = JSONDecoder()
-    //                decoder.dateDecodingStrategy = .iso8601
-    //
-    //                let data = try Data(contentsOf: URL(fileURLWithPath: fileURL))
-    //                print(data)
-    //                let decodedData = try decoder.decode(Savings.self, from: data)
-    //
-    //                completion(decodedData)
-    //            } catch {
-    //                print("Error parsing JSON: \(error)")
-    //                completion(nil)
-    //            }
-    //        } else {
-    //            print("Unable to find the JSON file.")
-    //            completion(nil)
-    //        }
-    //
-    //    }
-    
-    //    func fetchSavingsData(completion: @escaping(Savings) -> Void){
-    //
-    //        guard let url = URL(string: "https://simplisave.software/api/v1/goalSavings/goals") else {return}
-    //
-    //        let session = URLSession.shared
-    //
-    //        let dataTask = session.dataTask(with: url) { data, response, error in
-    //            if data != nil, error == nil{
-    //                do {
-    //                    let parsingData = try JSONDecoder().decode(Savings.self, from:data!)
-    //                    //print(parsingData)
-    //                    completion(parsingData)
-    //                } catch {
-    //                    print("parsing error")
-    //                }
-    //            }
-    //        }
-    //        dataTask.resume()
-    //    }
     
     func fetchSavingsData(completion: @escaping (Savings?) -> Void) {
         if let fileURL = URL(string: "https://simplisave.software/api/v1/goalSavings/goals") {
@@ -510,14 +220,14 @@ class SavingsService {
                 //print(data)
                 if let error = error {
                     print(error.localizedDescription)
-                    //print("error.localizedDescription")
+                    print("error.localizedDescription")
                     completion(nil)
                 } else if let data = data {
                     print(data)
                     
                     do {
                         let decodedData = try JSONDecoder().decode(Savings.self, from: data)
-                        //print(decodedData)
+                        print(decodedData)
                         completion(decodedData)
                     } catch {
                         print("Error parsing JSON: \(error)")
@@ -531,34 +241,6 @@ class SavingsService {
         }
     }
     
-    //Sercive that update data on a specific savings item 14/08/2023 Shahiel
-    //    func updateJson(ToUpdate: Savings) {
-    //        if let fileURL = Bundle.main.path(forResource: "dataS", ofType: "json") {
-    //            do {
-    //                //print("hello")
-    //                let decoder = JSONDecoder()
-    //                decoder.dateDecodingStrategy = .iso8601
-    //
-    //                let encoder = JSONEncoder()
-    //                encoder.dateEncodingStrategy = .iso8601
-    //
-    //                let data = try Data(contentsOf: URL(fileURLWithPath: fileURL))
-    //
-    //                var decodedData = try decoder.decode([Savings].self, from: data)
-    //
-    //                decodedData[0] = ToUpdate
-    //
-    //
-    //                let updatedData = try encoder.encode(decodedData)
-    //                //print(updatedData)
-    //                try updatedData.write(to: URL(fileURLWithPath: fileURL))
-    //                print("Data updated and written to \(fileURL)")
-    //
-    //            } catch {
-    //                print("Error parsing JSON: \(error)")
-    //            }
-    //        }
-    //    }
     
     func updateJson(ToUpdate: Int, id: Int)  {
         
@@ -650,45 +332,11 @@ class SavingsService {
         task.resume()
     }
 }
-    //Sercive that add data to the savings json 14/08/2023 Shahiel
-//    func addToJson(ToAdd: Savings){
-//        if let fileURL = Bundle.main.url(forResource: "dataB", withExtension: "json"){
-//            do{
-//                let encoder = JSONEncoder()
-//                encoder.dateEncodingStrategy = .iso8601
-//
-//                let data = try Data(contentsOf: fileURL)
-//
-//                var decodedData = try JSONDecoder().decode([Savings].self, from: data)
-//
-//                decodedData.append(ToAdd)
-//
-//                let updatedData = try encoder.encode(decodedData)
-//
-//                try updatedData.write(to: fileURL)
-//                print("Data updated and written to \(fileURL)")
-//            } catch {
-//                print("Error parsing JSON: \(error)")
-//            }
-//        }
-//    }
-    
         
-
-
-/*
- created 21 08 2023
- updated: 21 08 2023
- Dev: Robert
- Function name:login
- Description: takes in username: String, password: String (NB) username is the Email
- 
- The function pass data to the API to authenticate the user and return a token which is saved in user default with key "user_token"
- */
 class loginDataService{
        func login(username: String, password: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-           // getting the url from the info file Robert 29/08/2023
+           // getting the url from the info file
            let apiUrl = Bundle.main.object(forInfoDictionaryKey: "loginStudent") as! String
                let loginURL = URL(string: apiUrl)!
 
@@ -698,7 +346,7 @@ class loginDataService{
         loginRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
-        //parameters for login Robert 14/08/2023
+        //parameters for login
         let loginData: [String: Any] = [
             "username": username,
             "password": password
@@ -721,14 +369,14 @@ class loginDataService{
                             let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                             if let token = jsonResponse?["token"] as? String{
                             
-                                //saving login token robert
+                                //saving login token
                                 UserDefaults.standard.set(token, forKey: "user_token")
                                 UserDefaults.standard.synchronize()
                                 
                                 completion(.success("Login successful"))
                                 print(token)
                             } else {
-                                //if the user authentication failed, no token is returned Robert...
+                                //if the user authentication failed, no token is returned
                                 completion(.failure(NSError(domain: "Token not found in response", code: -1, userInfo: nil)))
                             }
                         }catch {
@@ -744,23 +392,13 @@ class loginDataService{
    
 }
 
-/*
- created 21 08 2023
- updated: 05 09 2023
- Dev: Robert
- Function name:register
- Description: takes in firstName: String, lastName: String, cellphoneNumber: String, email: String, idNo: String, password: String, createdAt: String, updatedAt: String
- 
- The function pass data to the API
- */
- 
 class registerDataService: UIViewController {
 
     var errorMsg = ""
 
     // Add a completion handler to the register method
     func register(firstName: String, lastName: String, cellphoneNumber: String, email: String, idNo: String, password: String, createdAt: String, updatedAt: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
-        // getting the url from the info file Robert 29/08/2023\
+        // getting the url from the info file
         
         let parameters: [String: Any] = [
                   "email": email,
@@ -819,14 +457,14 @@ class registerDataService: UIViewController {
 
 
 /*
- reading data from the API and displayig to the user Robert 25/08/2023
+ reading data from the API and displayig to the user
  */
 class userGetDetails {
     var userProfile: UserRegister?
     func fetchData(completion: @escaping (Error?) -> Void) {
         
 
-        // getting the url from the info file Robert 29/08/2023
+        // getting the url from the info file
         let apiUrl = Bundle.main.object(forInfoDictionaryKey: "userDetails") as! String
         let url = URL(string: apiUrl)!
         
@@ -899,7 +537,7 @@ class userGetDetails {
     }
 }
 
-//retrieves data from the API: 28/08/2023 | Rolva
+//retrieves data from the API
 class DataService {
     func fetchStudents(completion: @escaping (Result<Transaction, Error>) -> Void) {
         let url = URL(string: "https://simplisave.software/api/v1/admin/students")!
@@ -933,11 +571,6 @@ class DataService {
 }
 
 
-/*
- uploading the image to the API using multipart/form-data
- Author: Robert
- Date: 28/08/2023
- */
 class uploadPic{
     func register(imageUrl: String){
         //passing the data gotten to the parameters
@@ -945,7 +578,7 @@ class uploadPic{
             "imageUrl": imageUrl
         ]
         
-        // getting the url from the info file Robert 29/08/2023
+        // getting the url from the info file
         let apiUrl = Bundle.main.object(forInfoDictionaryKey: "uploadImage") as! String
         guard let url = URL(string: apiUrl) else {
 
@@ -991,7 +624,7 @@ class uploadPic{
     }
 }
 
-// MARK: - Service that performs forgot password - Masana Chauke - 28/08/2023
+// MARK: - Service that performs forgot password
 
 class ForgotPasswordDataService {
     
@@ -1030,7 +663,7 @@ class ForgotPasswordDataService {
             }
         }
     }
-//MARK: - service that performs otp verification - Masana - 30/08/2023
+//MARK: - service that performs otp verification
 
 class OTPDataService {
     func sendOTPRequest(email: String, completion: @escaping (Result<OTPModel, Error>) -> Void) {
@@ -1075,7 +708,7 @@ class OTPDataService {
 }
 
 
-//MARK: - service that performs reset password - Masana - 29/08/2023
+//MARK: - service that performs reset password
 class ResetPasswordDataService {
     
     func sendResetPasswordRequest(resetPasswordModel: ResetPasswordModel, completion: @escaping (Result<Void, Error>) -> Void) {
@@ -1124,7 +757,7 @@ class budgetCreateDataService{
             
         ]
         
-        // getting the url from the info file Robert 29/08/2023
+        // getting the url from the info file
         let apiUrl = Bundle.main.object(forInfoDictionaryKey: "budget") as! String
         guard let url = URL(string: apiUrl) else {
             print("Invalid URL")
@@ -1173,7 +806,7 @@ class budgetCreateDataService{
 class getBudget{
     var bgt:budgetDetails?
     func fetchData(completion: @escaping (Error?) -> Void) {
-        // getting the url from the info file Robert 31/08/2023
+        // getting the url from the info file 
         let apiUrl = Bundle.main.object(forInfoDictionaryKey: "budget") as! String
         let url = URL(string: apiUrl)!
         
