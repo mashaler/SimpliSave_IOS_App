@@ -1,34 +1,7 @@
 // AccountModel.swift
 import Foundation
 
-//struct Account: Codable {
-//    //let userId: Int
-//    let firstName: String
-//    let lastName: String
-//    let email: String
-//    let cellphoneNumber: String
-//    let idNo: String
-//    let imageUrl: String?
-//    let accounts: [UserAccount]
-//}
-//
-//struct UserAccount: Codable {
-//    let accountId: Int
-//    let accountNo: String
-//    let accountBalance: Double
-//    let accountType: String
-//    // let savingsAccount: SavingsAccount
-//}
-//
-//struct SavingsAccount: Codable {
-//    let savingsAccountId: Int
-//    let currentSavingsBalance: Double
-//    let savingsAccountNumber: String
-//}
-//
-//// ... other properties as needed
 
-// 29/08/2023 | Rolva
 struct Transaction: Codable {
     let httpStatusCode: Int
     let message: String
@@ -41,7 +14,7 @@ struct Transaction: Codable {
     }
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 // MARK: - DataElement
 struct DataElement: Codable {
     let userID: Int
@@ -62,7 +35,7 @@ struct DataElement: Codable {
     }
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 // MARK: - Account
 struct Account: Codable {
     let accountId: Int
@@ -83,7 +56,7 @@ enum AccountType: String, Codable {
     case mainAccount = "main account"
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 // MARK: - GoalSaving
 struct GoalSaving: Codable {
     let goalID, amountSet: Int
@@ -97,7 +70,7 @@ struct GoalSaving: Codable {
     }
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 // MARK: - SavingsAccount
 struct SavingsAccount: Codable {
     let savingsAccountID, currentSavingsBalance: Int
@@ -110,20 +83,8 @@ struct SavingsAccount: Codable {
     }
 }
 
-// MARK: - TransactionElement
-//struct TransactionElement: Codable {
-//    let transactionID: Int
-//    let transactionType: TransactionType
-//    let transactionDate, description: String
-//    let moneyIn, moneyOut, availableBalance: Int
-//
-//    enum CodingKeys: String, CodingKey {
-//        case transactionID = "transactionId"
-//        case transactionType, transactionDate, description, moneyIn, moneyOut, availableBalance
-//    }
-//}
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 enum TransactionType: String, Codable {
     case books = "BOOKS"
     case deposit = "DEPOSIT"
@@ -131,7 +92,7 @@ enum TransactionType: String, Codable {
     case other = "OTHER"
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023
 // MARK: - Role
 struct Role: Codable {
     let id: Int
@@ -142,7 +103,7 @@ enum Name: String, Codable {
     case roleStudent = "ROLE_STUDENT"
 }
 
-// 29/08/2023 | Rolva
+// 29/08/2023 
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {

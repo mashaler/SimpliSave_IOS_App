@@ -2,12 +2,10 @@
 //  SavingsModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 126 on 2023/08/10.
-//
 
 import Foundation
 
-//Model for the savings data 10/08/2023, Shahiel
+//Model for the savings data 
 //struct Savings: Codable {
 //    var amountSet, currentSavings, totalSavings: Double
 //    var date: Date

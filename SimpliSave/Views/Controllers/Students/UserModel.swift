@@ -2,13 +2,12 @@
 //  UserModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 126 on 2023/08/07.
-// updated: 15/08/2023 Robert, added User struct and renamed the first one to UserRegister
+
 
 import Foundation
 
 struct UserRegister: Codable {
-    //changed the variable declaration from var to var: 10/08/2023 | Rolva
+    //changed the variable declaration from var to var
     var firstName: String, lastName: String, cellphoneNumber: String, email: String,imageUrl:String
     var idNo: String, password: String,createdAt:String,updatedAt:String
 
@@ -19,13 +18,6 @@ struct UserRegister: Codable {
 //    }
 }
 
-
-/*
- created 10 08 2023
- updated: 15 08 2023
- Dev: Robert
- Description: used for user authentication
- */
 struct User {
     var username: String
     var password: String

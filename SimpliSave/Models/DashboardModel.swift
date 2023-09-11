@@ -2,12 +2,10 @@
 //  DashboardModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 126 on 2023/08/08.
-//
 
 import Foundation
 
-//Model for the dashboard data for API 10/08/2023, Shahiel
+//Model for the dashboard data for API
 struct DashBudget: Codable {
 //    var amountSet, progressAmount: Int
 //    var transactionsType: String

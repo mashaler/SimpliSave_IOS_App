@@ -1,13 +1,12 @@
 //
 //  BudgetModel.swift
 //  SimpliSave
-//
-//  Created by DA MAC M1 126 on 2023/08/07.
+
 //
 
 import Foundation
 
-//Model for the budget data for API 14/08/2023, Shahiel
+//Model for the budget data for API 
 struct Budget: Codable {
 //    var amountSet, progressAmount: Int
 //    var transactionsType: String
