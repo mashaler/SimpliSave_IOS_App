@@ -1,0 +1,36 @@
+{
+  "HTTP Status Code:": 200,
+  "Message:": "Goal savings retrieved successfully.",
+  "Data:": [
+    {
+      "goalId": 2,
+      "amountSet": 1000,
+      "currentSaved": 0,
+      "description": "Laptop",
+      "dateCreated": "2023-08-30T10:27:33.858+00:00",
+      "savingsAccount": {
+        "savingsAccountId": 4,
+        "totalSavings": 200,
+        "dateUpdated": "2023-08-30T10:48:20.806+00:00",
+        "savingsAccountNumber": "5814037265"
+      },
+      "deleteGoalSavings": false,
+      "deleted": false
+    },
+    {
+      "goalId": 5,
+      "amountSet": 2000,
+      "currentSaved": 200,
+      "description": "Laptop",
+      "dateCreated": "2023-08-30T10:47:41.793+00:00",
+      "savingsAccount": {
+        "savingsAccountId": 4,
+        "totalSavings": 200,
+        "dateUpdated": "2023-08-30T10:48:20.806+00:00",
+        "savingsAccountNumber": "5814037265"
+      },
+      "deleteGoalSavings": false,
+      "deleted": false
+    }
+  ]
+}

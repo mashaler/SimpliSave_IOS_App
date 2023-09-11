@@ -1,0 +1,6 @@
+framework module Pods_SimpliSave {
+  umbrella header "Pods-SimpliSave-umbrella.h"
+
+  export *
+  module * { export * }
+}

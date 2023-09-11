@@ -1,0 +1,38 @@
+[
+  {
+    "transactionId": 1,
+    "transactionType": "DEPOSIT",
+    "transactionDate": "2023-08-23T13:12:59.363+00:00",
+    "description": "Monthly Salary",
+    "moneyIn": 1000,
+    "moneyOut": 0,
+    "availableBalance": 1000
+  },
+  {
+    "transactionId": 2,
+    "transactionType": "FOOD",
+    "transactionDate": "2023-08-23T13:39:09.633+00:00",
+    "description": "Cheeckers",
+    "moneyIn": 0,
+    "moneyOut": 500,
+    "availableBalance": 500
+  },
+  {
+    "transactionId": 3,
+    "transactionType": "FOOD",
+    "transactionDate": "2023-08-23T13:42:43.855+00:00",
+    "description": "Cheeckers",
+    "moneyIn": 0,
+    "moneyOut": 50,
+    "availableBalance": 450
+  },
+  {
+    "transactionId": 4,
+    "transactionType": "FOOD",
+    "transactionDate": "2023-08-23T13:48:57.340+00:00",
+    "description": "Cheeckers",
+    "moneyIn": 0,
+    "moneyOut": 10,
+    "availableBalance": 440
+  }
+]

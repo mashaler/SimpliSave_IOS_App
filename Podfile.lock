@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (5.7.1)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - SwiftAlgorithms (1.0.0)
+  - youtube-ios-player-helper (1.0.4)
+  - YouTubePlayer-Swift (1.0)
+  - ZendeskChatProvidersSDK (4.0.1)
+  - ZendeskChatSDK (4.0.1):
+    - ZendeskChatProvidersSDK (~> 4.0.0)
+    - ZendeskMessagingSDK (~> 5.0.0)
+  - ZendeskCommonUISDK (8.0.0)
+  - ZendeskMessagingAPISDK (5.0.0):
+    - ZendeskSDKConfigurationsSDK (~> 3.0.0)
+  - ZendeskMessagingSDK (5.0.0):
+    - ZendeskCommonUISDK (~> 8.0.0)
+    - ZendeskMessagingAPISDK (~> 5.0.0)
+  - ZendeskSDKConfigurationsSDK (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Charts
+  - youtube-ios-player-helper (~> 1.0)
+  - YouTubePlayer-Swift (~> 1.0)
+  - ZendeskChatSDK
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Charts
+    - SwiftAlgorithms
+    - youtube-ios-player-helper
+    - YouTubePlayer-Swift
+    - ZendeskChatProvidersSDK
+    - ZendeskChatSDK
+    - ZendeskCommonUISDK
+    - ZendeskMessagingAPISDK
+    - ZendeskMessagingSDK
+    - ZendeskSDKConfigurationsSDK
+
+SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
+  YouTubePlayer-Swift: ae82f4bcb504162a872b852596a9dc1fa3828c34
+  ZendeskChatProvidersSDK: d495367c84943b4a23a77c53cbb724524101d516
+  ZendeskChatSDK: e3cf7f59af5e59c8f59a98879417f92e9a5bb1ea
+  ZendeskCommonUISDK: d2dfaa56b9da2658dac0e078022bf918959b5854
+  ZendeskMessagingAPISDK: 355f623d727620755b4041a42dffda4fb28ab90c
+  ZendeskMessagingSDK: 66b82e44c774359ac14f5fb21765aa73d0d174dd
+  ZendeskSDKConfigurationsSDK: 6b4b0941d46afd7352682c4ce764d5999535b7d4
+
+PODFILE CHECKSUM: 9accc07c44b3cda6655815f409fdc679d4ee7e3b
+
+COCOAPODS: 1.12.1
