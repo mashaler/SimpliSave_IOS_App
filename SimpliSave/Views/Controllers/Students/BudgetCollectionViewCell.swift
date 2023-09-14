@@ -15,7 +15,7 @@ class BudgetCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Add a bottom border layer to the cell, 31/07/23, Shahiel
+        // Add a bottom border layer to the cell
         layer.sublayers?.filter { $0.name == "borderLayer" }.forEach { $0.removeFromSuperlayer() }
         let borderLayer = CALayer()
         borderLayer.backgroundColor = (UIColor(red: 0.88, green: 0.87, blue: 0.87, alpha: 1.00)).cgColor

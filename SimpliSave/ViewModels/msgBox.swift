@@ -2,8 +2,6 @@
 //  msgBox.swift
 //  SimpliSave
 //
-//  Created by Robert on 2023/09/04.
-//
 
 import UIKit
 

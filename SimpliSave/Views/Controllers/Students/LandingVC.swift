@@ -19,7 +19,7 @@ class LandingVC: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        // Set button corner radius, border width and bordercolor : 20/07/2023 | Ofentse Malebye
+        // Set button corner radius, border width and bordercolor
         loginButton.layer.cornerRadius = 10
         loginButton.clipsToBounds = true
         loginButton.layer.borderWidth = 1

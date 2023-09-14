@@ -24,7 +24,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         tabBar.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
     }
     
-    //gets current selected index and sets page title for it, 27/07/23, Shahiel
+    //gets current selected index and sets page title for it
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let selectedTabIndex = tabBarController.viewControllers?.firstIndex(of: viewController) {
             if selectedTabIndex == 0 {
@@ -48,11 +48,3 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     }
     
 }
-
-//            let selectedView = self.viewControllers?[selectedIndex].view
-//                UIView.transition(
-//                with: view,
-//                duration:0.7,
-//                options:[.transitionCrossDissolve],
-//                animations:{selectedView?.alpha=1.0},
-//                completion: nil)

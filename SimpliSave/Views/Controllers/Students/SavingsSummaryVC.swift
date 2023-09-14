@@ -87,7 +87,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         }
     }
 
-    //Calls the fetchSavingsData function in the services file, 10/08/2023, Shahiel
+    //Calls the fetchSavingsData function in the services file
     func setup(){
         getId{ Id in self.Id = Int((Id ?? 0))}
         getCurrentSaved{ currentSavedValue in self.currentSaved = (currentSavedValue ?? 0)}
@@ -178,10 +178,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
                 //print(amountSetValue)
                 completion(amountSetValue)
             }
-//            let highestGoalIndex = savingsData.firstIndex(where: { $0.goalID == self.Id })
-//            let amountSetValue = Double(self.savings.savings[highestGoalIndex ?? 0].amountSet)
-//            print(amountSetValue)
-//            completion(amountSetValue)
+
         })
     }
     
@@ -227,7 +224,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         setup()
     }
     
-    //Update code that is called when required, 10/08/2023, Shahiel
+    //Update code that is called when required
     func update(set: Double,current: Double,total: Double){
         SavingsService().updateJson(ToUpdate: Int(current), id: Int(Id))
         setup()
@@ -241,14 +238,14 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
     }
     // MARK: - IBActions
     
-    //Peforms action on button click, 02/08/23, Shahiel
+    //Peforms action on button click
     @IBAction func btnUpdateSavings(_ sender: Any) {
         isMonthEnd()
     }
     
     // MARK: - updateSaved
     
-    //Prompts alert to update savings, 02/08/23, Shahiel
+    //Prompts alert to update savings
     func updateSaved(){
         let alertController = UIAlertController(title: "Update Savings", message: "How much have you saved today?", preferredStyle: .alert)
 
@@ -265,12 +262,12 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
                 let userInput = (Double(enteredText) ?? 0)
 
                 if ((self?.currentSaved ?? 0) + (userInput)) > (self?.amountSet ?? 0){
-                    //Handles update when users savings exceed target, 02/08/23, Shahiel
+                    //Handles update when users savings exceed target
                     self?.ifExeeded(input: userInput)
                     //self?.setup()
                     self?.viewDidAppear(false)
                 }else{
-                    //Handles update when users savings is blow target, 02/08/23, Shahiel
+                    //Handles update when users savings is blow target
                     self?.ifNotExeeded(input: userInput)
                     //self?.setup()
                     self?.viewDidAppear(false)
@@ -287,7 +284,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
     
     // MARK: - targetReached
     
-    //Handles update when users savings target is reached, 02/08/23, Shahiel
+    //Handles update when users savings target is reached
     func targetReached(){
         //print(overTarget)
         if overTarget == false {
@@ -306,7 +303,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         setup()
     }
     
-    //Checks and performs code if budget limit is not exceeded, 10/08/2023, Shahiel
+    //Checks and performs code if budget limit is not exceeded
     func ifNotExeeded(input: Double){
         let toUpdate = (input)
         update(set: 0,current: toUpdate,total: 0)
@@ -316,7 +313,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
 //        lblSavedThisMonth.text = String(thisMonthCount)
     }
     
-    //Checks and performs code if budget limit is exceeded, 10/08/2023, Shahiel
+    //Checks and performs code if budget limit is exceeded
     func ifExeeded(input: Double){
         add(newGoal: Int(input))
         //setup()
@@ -327,7 +324,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
     }
     // MARK: - newTarget
     
-    //prompts alert to sets new savings target, 02/08/23, Shahiel
+    //prompts alert to sets new savings target
     func newTarget(){
         let alertController = UIAlertController(title: "Add New Savings Target", message: "What is your next target", preferredStyle: .alert)
 
@@ -357,11 +354,11 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
     }
     
     // MARK: - generateChart
-    //Handles to generate and uodate the piechart, 02/08/23, Shahiel
+    //Handles to generate and uodate the piechart
     func generateChart(){
         innerChartView.addSubview(pieChart)
         
-        //Sets location of piechart in specified view, 02/08/23, Shahiel
+        //Sets location of piechart in specified view
         pieChart.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pieChart.centerXAnchor.constraint(equalTo: innerChartView.centerXAnchor),
@@ -375,7 +372,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         
         var entries = [PieChartDataEntry]()
         
-        //finds the savings and taget values so it can be set in the piechart, 02/08/23, Shahiel
+        //finds the savings and taget values so it can be set in the piechart
         for index in 0...1{
             if index == 0 {
                 let entry = PieChartDataEntry(value: currentSaved)
@@ -388,7 +385,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
             }
         }
         
-        //Sets Values, set colours, changes properties of piechart, 02/08/23, Shahiel
+        //Sets Values, set colours, changes properties of piechart
         let set = PieChartDataSet(entries: entries, label: "Donut Chart")
         set.colors = [UIColor(red: 0.52, green: 0.03, blue: 0.34, alpha: 1.00), UIColor(red: 0.72, green: 0.71, blue: 0.71, alpha: 1.00)]
         set.sliceSpace = 2
@@ -402,16 +399,12 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         pieChart.delegate = self
         pieChart.isUserInteractionEnabled = false
         
-//        if ((amountSet) != 0){
-//            if ((currentSaved) == (amountSet)){
-//                targetReached()
-//            }
-//        }
+
     }
     
     // MARK: - MonthEnd
     
-    //Finds last day of the month, 02/08/23, Shahiel
+    //Finds last day of the month
     func lastDayOfMonth(for date: Date) -> Date? {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month], from: date)
@@ -420,14 +413,14 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         return calendar.date(from: components)
     }
     
-    //Takes in data and formats it to a set date format, 02/08/23, Shahiel
+    //Takes in data and formats it to a set date format
     func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
     }
     
-    //Checks if the current day is the last day of the month. Prompts alert to handle savings target if it is month end, 02/08/23, Shahiel
+    //Checks if the current day is the last day of the month. Prompts alert to handle savings target if it is month end
     func isMonthEnd() {
         let currentDate = Date()
         let lastDayOfMonth = lastDayOfMonth(for: currentDate) ?? currentDate
@@ -464,9 +457,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
                 
                 let newAction = UIAlertAction(title: "New", style: .default) {[weak self] _ in
                     self?.newTarget()
-    //                self?.update(set: 0, current: 0, total: self?.savings.savings[0].totalSavings ?? 0)
-//                    self?.lblSavedThisMonth.text = String(0)
-//                    self?.thisMonthCount = 0
+
                     self?.monthlySaved()
                 }
                 
@@ -487,7 +478,7 @@ class SavingsSummaryVC: UIViewController, ChartViewDelegate {
         
     }
     
-    //Manages state of page to ensure the graph refreshes properly, 17/08/2023, Shahiel
+    //Manages state of page to ensure the graph refreshes properly
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         

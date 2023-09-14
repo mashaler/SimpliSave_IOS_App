@@ -65,7 +65,7 @@ class DashboardVC: UIViewController, ChartViewDelegate {
         }
     }
     
-    //Calls the fetchdashboardData function in the services file, 14/08/2023, Shahiel
+    //Calls the fetchdashboardData function in the services file
     func setup(){
         DashService().fetchdashboardData { data in
             self.dashboardData = DashboardsViewModel(dashBudgets: data?.budgets ?? [])
@@ -79,7 +79,7 @@ class DashboardVC: UIViewController, ChartViewDelegate {
         }
     }
     
-    //Gets total of all expenses and displays it in the label, 28/07/23, Shahiel
+    //Gets total of all expenses and displays it in the label
     func getTotal() {
         total = 0
         for index in 0..<dashboardData.dashBudgets.count {
@@ -130,7 +130,7 @@ class DashboardVC: UIViewController, ChartViewDelegate {
     
     // MARK: - generateChart
     
-    //Generates piechart, 26/07/23, Shahiel
+    //Generates piechart
     func generateChart(){
         chartView.addSubview(pieChart)
         
@@ -173,7 +173,7 @@ class DashboardVC: UIViewController, ChartViewDelegate {
         pieChart.delegate = self
     }
 
-    //Changes labels to display expense for selected piece of pie chart, 31/07/23, Shahiel
+    //Changes labels to display expense for selected piece of pie chart
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         guard let pieEntry = entry as? PieChartDataEntry else { return }
         
@@ -189,12 +189,12 @@ class DashboardVC: UIViewController, ChartViewDelegate {
         }
     }
     
-    //calls abd executes getTotal when piece of piechart is not selected, 26/07/23, Shahiel
+    //calls abd executes getTotal when piece of piechart is not selected
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
         getTotal()
     }
 
-    //Randomly generates colours and adds it to an array, 28/07/23, Shahiel
+    //Randomly generates colours and adds it to an array
 //    func generateColours() -> [UIColor] {
 //        setup()
 //        for _ in 0..<2 {
@@ -214,12 +214,12 @@ class DashboardVC: UIViewController, ChartViewDelegate {
 
 extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
-    //Sets number of sections to 1, 25/07/23, Shahiel
+    //Sets number of sections to 1
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    //Gets length of data list for number of rows, 26/07/23, Shahiel
+    //Gets length of data list for number of rows
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let numberOfRows = dashboardData?.numberOfRowsInSection(section) {
                 return numberOfRows
@@ -228,7 +228,7 @@ extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             }
     }
     
-    //Loads data from data list into collectionView, 26/07/23, Shahiel
+    //Loads data from data list into collectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DashBoardCollectionViewCell else {return UICollectionViewCell()}
@@ -254,13 +254,13 @@ extension DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         return cell
     }
     
-    //Sets height and width of each cell, 26/07/23, Shahiel
+    //Sets height and width of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 360, height: 90)
     }
     
-    //Manages state of page to ensure the graph refreshes properly and after and upate on the budget screen, 17/08/2023, Shahiel
+    //Manages state of page to ensure the graph refreshes properly and after and upate on the budget screen
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 

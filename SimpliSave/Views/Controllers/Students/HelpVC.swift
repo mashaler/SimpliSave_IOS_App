@@ -24,28 +24,5 @@ class HelpVC: UIViewController {
         //setupAnimation()
     }
 
-//    func setupAnimation() {
-//        lottieanimationView = .init(name: "ChatBot")
-//        lottieanimationView.frame = view.frame
-//        lottieanimationView.contentMode = .scaleAspectFit
-//        lottieanimationView.loopMode = .loop
-//        lottieanimationView.animationSpeed = 1.0
-//        view.addSubview(lottieanimationView)
-
-        // Start playing the animation
-        //lottieanimationView.play { [weak self] _ in
-            // Animation has finished playing, now add the chat interface
-          //  self?.addChatInterface()
         }
 
-//    func addChatInterface() {
-//        do {
-//            let chatEngine = try ChatEngine.engine()
-//            let viewController = try Messaging.instance.buildUI(engines: [chatEngine], configs: [])
-//
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//        } catch {
-//            // Handle error
-//        }
-//    }
-//}

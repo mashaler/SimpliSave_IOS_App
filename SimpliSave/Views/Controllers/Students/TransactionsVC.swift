@@ -26,9 +26,6 @@ class TransactionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /*
-         Getting user details from the API ROBERT 25 08 2023
-         */
         viewModel.fetchData { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -41,7 +38,7 @@ class TransactionsVC: UIViewController {
             }
         }
 
-        // Customise card view with rounded corners and shadow - Masana - 26/07/2023
+        // Customise card view with rounded corners and shadow
         
         card.layer.cornerRadius = 15.0
         card.layer.shadowColor = UIColor.black.cgColor
@@ -50,7 +47,7 @@ class TransactionsVC: UIViewController {
         card.layer.shadowRadius = 4
         card.clipsToBounds = false
         
-        // Customise subview and transactions collection view with rounded corners - Masana - 26/07/2023
+        // Customise subview and transactions collection view with rounded corners
         
         subview.layer.cornerRadius = 15.0
         transactions.layer.cornerRadius = 15
@@ -59,12 +56,12 @@ class TransactionsVC: UIViewController {
         subview.layer.shadowOpacity = 0.1
         subview.layer.shadowRadius = 4
         
-        // Register custom collection view cell class - Masana - 26/08/2027
+        // Register custom collection view cell class
         setup()
         transactions.register(TransactionsCollectionViewCell.self, forCellWithReuseIdentifier: "theCell")
       
         
-        // gets registered userName to display - Masana - 03/07/2023
+        // gets registered userName to display
         
         if let user_Name = UserDefaults.standard.data(forKey: "reg1"), let name = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(user_Name) as? [String] {
 
@@ -81,8 +78,8 @@ class TransactionsVC: UIViewController {
     }
     
     
-    //Calls the fetchDataFromJSON function in the services file, 14/08/2023, Shahiel
-    //Updated: added DispatchQueue, 15/08/2023,Shahiel
+    //Calls the fetchDataFromJSON function in the services file
+    //Updated: added DispatchQueue
     func setup() {
         TransactionService().fetchDataFromJSON(completion: { data in
             self.transactionsData = (TransactionsViewModel(transactions: data ?? []))
@@ -107,7 +104,7 @@ class TransactionsVC: UIViewController {
             return 1
         }
         
-        //Calls numberOfRowsInSection function from TransactionViewModel, 14/08/2023, Shahiel
+        //Calls numberOfRowsInSection function from TransactionViewModel
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             if let numberOfRows = transactionsData?.numberOfRowsInSection(section) {
                     return numberOfRows
@@ -116,7 +113,7 @@ class TransactionsVC: UIViewController {
                 }
         }
         
-        //Populates the table from the data fetche through the setup function, 15/08/2023, Shahiel
+        //Populates the table from the data fetche through the setup function
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? TransactionsCollectionViewCell else {
                 return UICollectionViewCell()
@@ -124,7 +121,7 @@ class TransactionsVC: UIViewController {
             
                    let date = Date()
                     
-                    //getting current date in this format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" Robert 31/08/2023
+                    //getting current date in this format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                     dateFormatter.timeZone = TimeZone(identifier: "UTC+2")

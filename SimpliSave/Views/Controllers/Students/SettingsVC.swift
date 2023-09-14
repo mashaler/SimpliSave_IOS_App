@@ -25,7 +25,7 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //Robert 04/09/2023 checking if the token expired, and redirecting to login
+       checking if the token expired, and redirecting to login
         let token = TokenManager()
         
         if token.isExpire {
@@ -35,10 +35,6 @@ class SettingsVC: UIViewController {
             }        } else {
             print("Still Valid")
         }
-        
-        /*
-         Getting user details from the API ROBERT 25 08 2023
-         */
         
         var login=LoginVC()
         
@@ -58,7 +54,7 @@ class SettingsVC: UIViewController {
         
       
     //printUserDetails()
-    // customise buttons - Masana - 27/07/2023
+    // customise buttons
         
         myDetails.layer.cornerRadius = 15.0
         myDetails.clipsToBounds = false
@@ -89,56 +85,14 @@ class SettingsVC: UIViewController {
         logout.layer.shadowRadius = 4
         
         
-        
-//        // Retrieve the stored profile image from UserDefaults
-//                if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
-//                    let image = UIImage(data: imageData) {
-//                    imageView.image = image
-//
-////                    imageView.layer.cornerRadius = imageView.frame.width / 2 // Make it circular
-////                    imageView.clipsToBounds = true // Ensure content doesn't go beyond rounded bounds
-//
-//                }
         imageView.layer.cornerRadius=65.0
         imageView.layer.masksToBounds=true
         imageView.layer.shadowOpacity=0.2
         imageView.layer.shadowOffset.width=1
         imageView.layer.shadowOffset.height=1.5
-//
-//    // Add an observer to listen for the "ProfilePictureUpdated" notification: 21/08/2023 | Rolva
-//            NotificationCenter.default.addObserver(self, selector: #selector(updateProfilePicture), name: NSNotification.Name(rawValue: "ProfilePictureUpdated"), object: nil)
-//
-//
-//
-//
-//        // Retrieve the stored user information from UserDefaults for username: 03/08/2023, Rolva
-//        if let user_Name = UserDefaults.standard.data(forKey: "reg1"), let name = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(user_Name) as? [String] {
-//
-//            let fullName = name[0] + " " + name[1]
-//            //userName.text = fullName
-//
-//        }
-//
-//      // Retrieve the stored user information from UserDefaults for email: 03/08/2023, Rolva
-//        if let email_Address = UserDefaults.standard.data(forKey: "reg5"), let name = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(email_Address) as? [String] {
-//
-//            //email.text=name[0]
-//        }
-//
 
     }
     
-    // Selector method to update the profile picture: 21/08/2023 | Rolva
-//    @objc func updateProfilePicture() {
-//        // Retrieve the stored profile image from UserDefaults
-//                if let imageData = UserDefaults.standard.data(forKey: "profileImage"),
-//                    let image = UIImage(data: imageData) {
-//                    //imageView.image = image
-//
-////                    imageView.layer.cornerRadius = imageView.frame.width / 2
-////                                imageView.clipsToBounds = true
-//        }
-//    }
    
     @IBAction func logoutClick(_ sender: Any) {
         //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
@@ -146,7 +100,7 @@ class SettingsVC: UIViewController {
 
     }
     
-    //updating UI 25/08/2023 Robert
+    //updating UI 
     private func updateUI() {
         let imageUrlString = self.viewModel.userProfile?.imageUrl ?? ""
         let trimmedImageUrlString = imageUrlString.replacingOccurrences(of: "http://res.cloudinary.com/", with: "")

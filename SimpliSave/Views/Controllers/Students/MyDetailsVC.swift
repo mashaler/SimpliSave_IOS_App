@@ -38,7 +38,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
         
         
         
-        //Robert 04/09/2023 checking if the token expired, and redirected to login
+        checking if the token expired, and redirected to login
         let token = TokenManager()
         //token.redirectLogin()
         if token.isExpire {
@@ -59,7 +59,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
             
             DispatchQueue.main.async {
 
-                //displaying the image loaded from the API to the user Robert 28/08/2023
+                //displaying the image loaded from the API to the user
                 
                 let imageUrlString = self.viewModel.userProfile?.imageUrl ?? ""
                 let trimmedImageUrlString = imageUrlString.replacingOccurrences(of: "http://res.cloudinary.com/", with: "")
@@ -88,10 +88,10 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
 
        // MARK: Text Field Styling
        
-        //Author: Ofentse Malebye
+        
         // Date : 25 July 2023
         
-       //controlling the size,width, color and border radius of the text fields: 15/08/2023 | Rolva
+       //controlling the size,width, color and border radius of the text fields
         firstNameTF.layer.borderWidth = 1
         firstNameTF.layer.borderColor = UIColor(named: "AppColor")?.cgColor
         firstNameTF.layer.cornerRadius = 15
@@ -144,7 +144,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
     
     // MARK: - Button Actions
     
-    //Author: Ofentse Malebye
+ 
     // Date : 27 July 2023
     
     @IBAction func updateButtonPressed(_ sender: Any) {
@@ -157,7 +157,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
     }
    
         
-        // Check if the cell number is in a valid format using a regular expression pattern - Robert - 2/08/2023
+        // Check if the cell number is in a valid format using a regular expression pattern
         let cellPattern = "^0\\d{9}$"
                 let cellPredicate = NSPredicate(format: "SELF MATCHES %@", cellPattern)
         if !cellPredicate.evaluate(with: cellPhoneTF.text) {
@@ -196,7 +196,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
     }
     
     
-    //function to print the information of the user: 02/08/2023 | Rolva
+    //function to print the information of the user
     func printUserInformation(_ userDict: [String: String]) {
         print("User Information:")
         print("First Name: \(userDict["firstName"] ?? "")")
@@ -240,11 +240,11 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
             let scaledImage = selectedImage.resizeToFill(targetSize: btnUserProfile.frame.size)
             btnUserProfile.image = scaledImage
             
-            // Store the selected image in the API robert 28/08/2023
+            // Store the selected image in the API
 
             if let selectedImage = btnUserProfile.image,
                 let imageData = selectedImage.pngData() {
-                //getting the stored url from info file 29/08/2023 Robert
+                //getting the stored url from info file
                 let url = Bundle.main.object(forInfoDictionaryKey: "uploadImage") as! String
 
                 
@@ -295,7 +295,7 @@ class MyDetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigat
    // MARK: - UIImage Extension
 extension UIImage {
     
-    //function that allows the uploaded profile picture to stick to the original size of the image view:21/08/2023 | Rolva
+    //function that allows the uploaded profile picture to stick to the original size of the image view
     func resizeToFill(targetSize: CGSize) -> UIImage {
         let size = self.size
         let widthRatio = targetSize.width / size.width

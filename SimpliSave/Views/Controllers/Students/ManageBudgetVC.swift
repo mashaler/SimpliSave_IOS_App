@@ -52,12 +52,6 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
     }
     
     func setup() {
-//        BudgetService().fetchBudgetData(completion: { data in
-////            self.budgetData = BudgetsViewModel(budgets: data ?? [])
-//            self.tableView.reloadData()
-//            //print(self.budgetData)
-//        })
-
 
         getBalance{ lastBalance in self.lastBalance = Double(lastBalance ?? 0)}
         
@@ -134,7 +128,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
 
     // MARK: - IBActions
 
-    //IBAction to add new expense, 02/08/23 | Rolva
+    //IBAction to add new expense
     @IBAction func addBtn(_ sender: Any) {
         if Double(checkBudget()) ?? 0 >= lastBalance{
             let alertController = UIAlertController(title: "Limit Reached", message: "You have R0 left to budget", preferredStyle: .alert)
@@ -152,7 +146,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
                 
             }
             
-            //controls the color of the texts and triggers the alert controller: 02/08/2023 Rolva/Shahiel
+            //controls the color of the texts and triggers the alert controller
             addCategoryAction(for: "FOOD", color: .black, alertController: alertController)
             addCategoryAction(for: "TRANSPORT", color: .gray, alertController: alertController)
             addCategoryAction(for: "TUITION", color: .gray, alertController: alertController)
@@ -160,7 +154,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
             addCategoryAction(for: "ACCOMMODATION", color: .gray, alertController: alertController)
             addCategoryAction(for: "OTHER", color: .gray, alertController: alertController)
             
-            //control the action of when you click cancel button: 02/08/2023 | Rolva
+            //control the action of when you click cancel button
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
             cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
             alertController.addAction(cancelAction)
@@ -174,7 +168,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
     
     // MARK: - AddsCategory
     
-    //Creates new category in alert, 02/08/23, Rolva/Shahiel
+    //Creates new category in alert
     func addCategoryAction(for name: String, color: UIColor, alertController: UIAlertController) {
         tableView.reloadData()
 
@@ -183,7 +177,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
                 //self.addExpense(name: name, newGoal: newGoal)
                 self.tableView.reloadData()
 
- //               valiateds user input to check if a budget is still posible, 03/08/23, Shahiel
+ //               valiateds user input to check if a budget is still posible
                 var total: Double = 0
                 for item in self.budgetData.budgets {
                     total += Double(item.amountSet)
@@ -211,7 +205,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
 
     }
     
-    //adds a new expense to data list when called, 02/08/23, Shahiel
+    //adds a new expense to data list when called
     func addExpense(name: String, newGoal: String){
 //        BudgetService().addToJson(amount: Int(newGoal) ?? 0)
         //BudgetService().addToJson(amount: Int(newGoal) ?? 0, type: name)
@@ -220,12 +214,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
         }
         
         if (budgetData.budgets == []) || (budgetData.budgets.first(where: { $0.transactionsType == name }) == nil){
-//                let newName = name
-//                let newStatus = "Not Started"
-//                let newProgress = 0
-//                let newId = (self.items.last?.id ?? 0) + 1
-//                let budget = Budget(amountSet: Int(newGoal) ?? 0, progressAmount: newProgress, transactionsType: newName, status: newStatus)
-//                self.budgetData.budgets.append(budget)
+
                 BudgetService().addToJson(amount: Int(newGoal) ?? 0, type: name)
                 //self.items.append(Item(name: newName, status: newStatus, goal: Int(newGoal) ?? 0, progress: newProgress))
                 self.tableView.reloadData()
@@ -236,7 +225,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
         self.getBalance()
     }
     
-    //alert for add if total budget equal to amount deposited, 02/08/23, Shahiel
+    //alert for add if total budget equal to amount deposited
     func noBudget(){
         let alertController = UIAlertController(title: "No budget set", message: "Please set a budget first", preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -248,7 +237,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //alert for add if expense already exsists, 02/08/23, Shahiel
+    //alert for add if expense already exsists
     func expenseExsits(){
         let alertController = UIAlertController(title: "Already Added", message: "The expense you selected already has a budget", preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -260,7 +249,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //alert for add if expense excceds balance, 02/08/23, Shahiel
+    //alert for add if expense excceds balance
     func overBudget(){
         let alertController = UIAlertController(title: "Limit Reached", message: "You do not have that much left to budget", preferredStyle: .alert)
         let submitAction = UIAlertAction(title: "OK", style: .default) { _ in
@@ -330,7 +319,7 @@ class ManageBudgetVC: UIViewController, UITableViewDelegate {
 
 extension ManageBudgetVC: UITableViewDataSource {
 
-    //Gets length of data list for number of rows, 27/07/23, Shahiel
+    //Gets length of data list for number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let numberOfRows = budgetData?.numberOfRowsInSection(section) {
                 return numberOfRows
@@ -339,7 +328,7 @@ extension ManageBudgetVC: UITableViewDataSource {
             }
     }
 
-    //Loads data from data list into tableview, 27/07/23, Shahiel
+    //Loads data from data list into tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath ) as? BudgetTableViewCell
@@ -376,7 +365,7 @@ extension ManageBudgetVC: UITableViewDataSource {
 
     // MARK: - swiping(Delete and edit)
     
-    //Adds swiping animation to each row for delete and update, 31/07/23, Shahiel
+    //Adds swiping animation to each row for delete and update
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completion) in
