@@ -2,10 +2,8 @@
 //  ResetPasswordViewModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 160 on 2023/08/28.
-//
 
-// Reset Password View Model - Masana - 28/08/2023
+// Reset Password View Model
 import Foundation
 
 class ResetPasswordViewModel {

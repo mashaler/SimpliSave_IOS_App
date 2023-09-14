@@ -2,21 +2,12 @@
 //  uViewModel.swift
 //  SimpliSave
 //
-//  Created by DA Mac M1 _133 on 2023/08/25.
-//
 
 import Foundation
 class uViewModel{
     //working with local file
     var getUserDetails: UserRegister?
 
-   /*
-    Created by Robert
-    Date: 25 08 2023
-    Updated: 25 08 2023
-    Func name: getData
-    Desc: The function decode the json file stored in the fileManager
-    */
     func getData(completion: @escaping () -> ()) {
         if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = documentsDirectory.appendingPathComponent("userDetails.json")
@@ -50,14 +41,6 @@ class uViewModel{
         }
     
    
-    
-    /*
-     Created by Robert
-     Date: 25 08 2023
-     Updated: 25 08 2023
-     Func name: getData
-     Desc: The function used to write data to the Json file, if file doesn't exist, a new file is created...
-     */
     func saveData(completion: @escaping (Error?) -> ()) {
         guard let userDetails = userDetails else {
             completion(nil) // No data to save

@@ -2,8 +2,6 @@
 //  SavingsViewModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 126 on 2023/08/10.
-//
 
 import Foundation
 
@@ -11,14 +9,6 @@ struct SavingsViewModel{
     
     var savings: [Saving]
     
-//    func numberOfRowsInSection(_ section:Int) -> Int{
-//        return savings.count
-//    }
-//
-//    func budgetsAtIndex(_ index: Int) -> SavingViewModel {
-//        var budgets = self.savings[index]
-//        return SavingViewModel(saving: budgets)
-//    }
 
 }
 

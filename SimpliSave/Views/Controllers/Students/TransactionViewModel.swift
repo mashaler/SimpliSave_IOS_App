@@ -2,8 +2,6 @@
 //  TransactionViewModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 126 on 2023/08/04.
-//
 
 import Foundation
 

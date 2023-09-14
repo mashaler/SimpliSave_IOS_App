@@ -1,6 +1,6 @@
 import Foundation
 
-// class for ManageStudent view Model: 29/08/2023 | Rolva
+// class for ManageStudent view Model: 29/08/2023 
 class ManageStudentViewModel {
     private var account: [Transaction] = []
     private let dataService: DataService

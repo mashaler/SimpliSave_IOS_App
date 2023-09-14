@@ -2,10 +2,8 @@
 //  ForgotPasswordViewModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 160 on 2023/08/28.
-//
 
-// View Model For Forgot Password - Masana - 28/08/2023
+// View Model For Forgot Password
 
 import Foundation
 

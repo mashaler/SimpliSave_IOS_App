@@ -2,10 +2,8 @@
 //  OTPViewModel.swift
 //  SimpliSave
 //
-//  Created by DA MAC M1 160 on 2023/08/29.
-//
 
-// One Time Pin View Model - Masana - 29/08/2023
+// One Time Pin View Model
 import Foundation
 
 class OTPViewModel {
