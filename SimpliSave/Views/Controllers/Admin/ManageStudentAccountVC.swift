@@ -1,6 +1,6 @@
 import UIKit
 
-//class for Manage student  Account: 29/08/2023 | Rolva
+//class for Manage student  Account
 class ManageStudentAccountVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!

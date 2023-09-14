@@ -17,8 +17,8 @@ class AdminDashboardVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set the corner radius here: 16/07/2023 | Rolva
-        // Allow shadow to be visible beyond the bounds of the UITextView: 16/07/2023 | Rolva
+        // Set the corner radius here
+        // Allow shadow to be visible beyond the bounds of the UITextView
         ManageStudentAccounts.layer.cornerRadius = 15.0
         ManageStudentAccounts.clipsToBounds = false
         AccountDetails.layer.cornerRadius = 15.0
