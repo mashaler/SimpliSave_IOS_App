@@ -32,8 +32,6 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //UserDefaults.standard.removeObject(forKey: "user_token")
-        //UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
        
         if let isLogined=UserDefaults.standard.string(forKey:"user_token"){
             print(isLogined)
@@ -44,7 +42,7 @@ class LoginVC: UIViewController {
 
         
         
-        //saving token expiration time Robert 04/09/2023
+        //saving token expiration time
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         dateFormatter.timeZone = TimeZone(identifier: "UTC+2")
@@ -195,57 +193,9 @@ class LoginVC: UIViewController {
         //if there are no errors, proceed to checking if the entered credentials are correct... 02/08/2023 Robert
         else{
 
-           
-          
-           
-            //login with jsonfile
-//            let viewModel = uViewModel()
-//            var getUserName=""
-//            var getPassword=""
-//            viewModel.getData {
-//                if let userDetails = viewModel.getUserDetails {
-//                    print("TESTING: \(userDetails.firstName)")
-//
-//                    getPassword=userDetails.password
-//                    getUserName=userDetails.email
-//                }
-//            }
-//
-//            if(getUserName == txtEmail.text  && getPassword==txtPassword.text  ){
-//                performAfterSuccessfulLogin()
-//                //proceed to the next page
-//            }
-//
-//            else{
-//                showAlert(msg: "Invalid login details, please try again!")
-//            }
-            
-            
-            
-            
-            
-            
-            
-            
-//            if let isLogined=UserDefaults.standard.string(forKey:"user_token"){
-//                print(isLogined)
-//            }
-//                else{
-//                showAlert(msg: "Invalid login details, please try again")
-//
-//            }
-
          //checking if email is in correct format
             if isValidEmail(email: userName!) {
-                // Proceed to the next screen
-                /*
-                 created 10 08 2023
-                 updated: 15 08 2023
-                 Dev: Robert
-                 Function name: Login
-                 Description: Calling the login function and passing the user details entered by the user to authenticate
-                 Parameters: username(email) and password
-                 */
+
                 let authViewModel = AuthViewModel()
                 authViewModel.login(username: txtEmail.text!, password: txtPassword.text!) { result in
                     DispatchQueue.main.async {
@@ -347,31 +297,31 @@ class LoginVC: UIViewController {
     
     func setupPasswordTextField() {
         
-        // Creates a view to hold the password toggle icon - Masana - 10/08/2023
+        // Creates a view to hold the password toggle icon
         
             let passwordRightView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
             let passwordContentView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 24))
             
-        // Creates an image view for the password toggle icon - Masana - 07/08/2023
+        // Creates an image view for the password toggle icon
         
             passwordToggleImageView = UIImageView(image: UIImage(named: "closedeye"))
             passwordToggleImageView.contentMode = .scaleAspectFit
             passwordToggleImageView.frame = CGRect(x: 6, y: 0, width: 24, height: 24)
             passwordContentView.addSubview(passwordToggleImageView)
             
-        // Adds a tap gesture recognizer to toggle the password visibility - Masana - 10/08/2023
+        // Adds a tap gesture recognizer to toggle the password visibility
         
             let passwordTapGesture = UITapGestureRecognizer(target: self, action: #selector(passwordToggleTapped))
             passwordContentView.addGestureRecognizer(passwordTapGesture)
         
-        // Puts the password toggle icon view and add it as the right view of the password field - Masana - 10/08/2023
+        // Puts the password toggle icon view and add it as the right view of the password field
         
             passwordRightView.addSubview(passwordContentView)
             txtPassword.rightView = passwordRightView
             txtPassword.rightViewMode = .always
             txtPassword.isSecureTextEntry = true
         }
-    // Function to toggle the visibility of the password text in the passwordTextField - Masana - 10/08/2023
+    // Function to toggle the visibility of the password text in the passwordTextField
     
     @objc func passwordToggleTapped() {
             txtPassword.isSecureTextEntry.toggle()
@@ -417,7 +367,7 @@ class LoginVC: UIViewController {
                 
                 else{
                     
-                    //Saving target Robert
+                    //Saving target 
 
                     SavingsService().fetchSavingsData(completion: { data in
                         

@@ -73,29 +73,28 @@ class ResetPasswordVC: UIViewController {
         
             navigationItem.hidesBackButton = true
         }
-//MARK: - Functions - Masana - 30/08/2023
+//MARK: - Functions
     
     func setupPasswordNewTextField() {
         
-        // Creates a view to hold the password toggle icon - Masana - 30/08/2023
+        // Creates a view to hold the password toggle icon
         
             let passwordRightView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
             let passwordContentView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 24))
             
-        // Creates an image view for the password toggle icon - Masana - 30/08/2023
+        // Creates an image view for the password toggle icon
         
             passwordNewToggleImageView = UIImageView(image: UIImage(named: "closedeye"))
             passwordNewToggleImageView.contentMode = .scaleAspectFit
             passwordNewToggleImageView.frame = CGRect(x: 6, y: 0, width: 24, height: 24)
             passwordContentView.addSubview(passwordNewToggleImageView)
             
-        // Adds a tap gesture recognizer to toggle the password visibility - Masana - 30/08/2023
+        // Adds a tap gesture recognizer to toggle the password visibility
         
             let passwordTapGesture = UITapGestureRecognizer(target: self, action: #selector(passwordNewToggleTapped))
             passwordContentView.addGestureRecognizer(passwordTapGesture)
         
-        // Puts the password toggle icon view and add it as the right view of the password field - Masana - 30/08/2023
-        
+        // Puts the password toggle icon view and add it as the right view of the password field
             passwordRightView.addSubview(passwordContentView)
             txtPasswordNew.rightView = passwordRightView
             txtPasswordNew.rightViewMode = .always
@@ -103,24 +102,24 @@ class ResetPasswordVC: UIViewController {
         }
     func setupPasswordConfirmTextField() {
         
-        // Creates a view to hold the password toggle icon - Masana - 30/08/2023
+        // Creates a view to hold the password toggle icon
         
             let passwordRightView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
             let passwordContentView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 24))
             
-        // Creates an image view for the password toggle icon - Masana - 30/08/2023
+        // Creates an image view for the password toggle icon
         
             passwordConfirmToggleImageView = UIImageView(image: UIImage(named: "closedeye"))
             passwordConfirmToggleImageView.contentMode = .scaleAspectFit
             passwordConfirmToggleImageView.frame = CGRect(x: 6, y: 0, width: 24, height: 24)
             passwordContentView.addSubview(passwordConfirmToggleImageView)
             
-        // Adds a tap gesture recognizer to toggle the password visibility - Masana - 30/08/2023
+        // Adds a tap gesture recognizer to toggle the password visibility
         
             let passwordTapGesture = UITapGestureRecognizer(target: self, action: #selector(passwordConfirmToggleTapped))
             passwordContentView.addGestureRecognizer(passwordTapGesture)
         
-        // Puts the password toggle icon view and add it as the right view of the password field - Masana - 30/08/2023
+        // Puts the password toggle icon view and add it as the right view of the password field
         
             passwordRightView.addSubview(passwordContentView)
             txtPasswordConfirm.rightView = passwordRightView
@@ -135,14 +134,14 @@ class ResetPasswordVC: UIViewController {
             passwordConfirmToggleImageView.image = UIImage(named: imageName)
         }
 
-    // Function to toggle the visibility of the password text in the passwordTextField - Masana - 30/08/2023
+    // Function to toggle the visibility of the password text in the passwordTextField
     
     @objc func passwordNewToggleTapped() {
             txtPasswordNew.isSecureTextEntry.toggle()
             let imageName = txtPasswordNew.isSecureTextEntry ? "closedeye" : "openeye"
             passwordNewToggleImageView.image = UIImage(named: imageName)
         }
-    // Function to validate the password against a specific pattern using a regular expression - Masana - 04/09/2023
+    // Function to validate the password against a specific pattern using a regular expression
     
     private func isValidPassword(_ password: String) -> Bool {
            let passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"
@@ -150,7 +149,7 @@ class ResetPasswordVC: UIViewController {
            return passwordPredicate.evaluate(with: password)
        }
 //MARK: - Actions - Masana - 03/02/2023
-// Function to reset password - Masana - 03/02/2023
+// Function to reset password
     
         @IBAction func btnReset(_ sender: UIButton) {
             guard let newPassword = txtPasswordNew.text,
@@ -159,7 +158,7 @@ class ResetPasswordVC: UIViewController {
                 showAlert(title: "Error", message: "Please enter all the fields")
                     return
                 }
-        // perform reset password - Masana - 30/08/2023
+        // perform reset password 
             
                 let resetPasswordModel = ResetPasswordModel(
                     otp: enteredOTP,

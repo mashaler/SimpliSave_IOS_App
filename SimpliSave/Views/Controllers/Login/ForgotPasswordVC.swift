@@ -55,7 +55,7 @@ class ForgotPasswordVC: UIViewController {
             return
         }
         
-    // sends a forgot password request - Maana - 28/08/2023
+    // sends a forgot password request
         viewModel.sendForgotPasswordRequest(email: userEmail) { [weak self] result in
                     DispatchQueue.main.async {
                         switch result {
