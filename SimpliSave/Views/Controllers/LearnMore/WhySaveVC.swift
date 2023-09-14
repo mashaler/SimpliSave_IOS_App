@@ -18,7 +18,7 @@ class WhySaveVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         //customise the ui view - Masana - 21/07/2023
+         //customise the ui view 
             whySaveText.layer.cornerRadius = 15.0
             whySaveText.layer.shadowColor = UIColor.black.cgColor
             whySaveText.layer.shadowOffset = CGSize(width: 0, height: 2)
