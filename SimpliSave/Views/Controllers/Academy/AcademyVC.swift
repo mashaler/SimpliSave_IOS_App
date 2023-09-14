@@ -29,7 +29,7 @@ class AcademyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Customise progress bar, images and UIViews - Masana - 28/07/2023
+        //Customise progress bar, images and UIViews
         progressbar.layer.cornerRadius = 15.0
         progressbar.clipsToBounds = false
         progressbar.layer.shadowColor = UIColor.black.cgColor
@@ -78,7 +78,7 @@ class AcademyVC: UIViewController {
         grad.layer.shadowOpacity = 0.1
         grad.layer.shadowRadius = 4
        
-        // added tap gestures to make images clickable - Masana - 28/07/2023
+        // added tap gestures to make images clickable
         
         let mbTapGesture = UITapGestureRecognizer(target: self, action: #selector(moneyBasicsTapped))
         mbImage.isUserInteractionEnabled = true
@@ -102,8 +102,7 @@ class AcademyVC: UIViewController {
     
 // MARK: - Actions
     
-    //when tapped, opens the partcular view attached to that controller 02/08/2023 Robert, Masana - 28/07/2023
-    
+    //when tapped, opens the partcular view attached to that controller
     @objc func moneyBasicsTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let moneyBasicsVC = storyboard.instantiateViewController(withIdentifier: " MoneyBasicsVC") as? MoneyBasicsVC {
@@ -158,7 +157,7 @@ class AcademyVC: UIViewController {
           let totalVideoCount = VideoCompletionManager.shared.videoCompletionStatus.count
           let completionPercentage = CGFloat(completedVideoCount) / CGFloat(totalVideoCount)
 
-          // Update the progress bar value and label - Masana 17/08/2023
+          // Update the progress bar value and label 
           progressBarView.progress = Float(completionPercentage)
           updateProgressLabel(completionPercentage: completionPercentage)
       }

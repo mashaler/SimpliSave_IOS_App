@@ -224,16 +224,6 @@ class SmartSpendingVC: UIViewController,YTPlayerViewDelegate {
         }
     }
     
-
-
-    /*
-     Created by Robert
-     Date: 26 07 2023
-     Updated: 07 08 2023
-     Function name: playVideo
-     parameter: link of type "String"
-     The function takes in a youtube and diplay it in a view whenever called
-     */
     private func playVideo(link: String) {
         playerView = YTPlayerView(frame: videoCon.bounds)
         playerView.delegate = self
@@ -246,15 +236,6 @@ class SmartSpendingVC: UIViewController,YTPlayerViewDelegate {
         }
     }
 
-    
-    /*
-     Created by Robert
-     Date: 26 07 2023
-     Updated: 07 08 2023
-     Function name: playVideo
-     parameter: link of type "String"
-     The function checks if the given link is a youtube link
-     */
     private func extractVideoID(from url: String) -> String? {
         // Regular expression pattern to match YouTube video IDs
         let pattern = #"(?<=youtu\.be\/|watch\?v=|\/videos\/|embed\/)[^#\&\?]*"# // This regex should handle most YouTube URLs

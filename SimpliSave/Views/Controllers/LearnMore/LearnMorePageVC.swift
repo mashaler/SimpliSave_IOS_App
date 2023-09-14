@@ -9,7 +9,7 @@ import UIKit
 
 class LearnMorePageVC: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource  {
     
-    //Adds view controllers to array for the page view diplay and functionality, 01/08/23, Shahiel
+    //Adds view controllers to array for the page view diplay and functionality
     lazy var orderedViewControllers: [UIViewController] = {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
@@ -40,7 +40,7 @@ class LearnMorePageVC: UIPageViewController, UIPageViewControllerDelegate, UIPag
      
     }
     
-    //sets the view controller of the previous page, 01/08/23, Shahiel
+    //sets the view controller of the previous page
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = orderedViewControllers.firstIndex(of: viewController) else {return nil}
         
@@ -53,7 +53,7 @@ class LearnMorePageVC: UIPageViewController, UIPageViewControllerDelegate, UIPag
         return orderedViewControllers[previousIndex]
     }
     
-    //sets the view controller of the next page, 01/08/23, Shahiel
+    //sets the view controller of the next page
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = orderedViewControllers.firstIndex(of: viewController) else {return nil}
         
@@ -66,12 +66,12 @@ class LearnMorePageVC: UIPageViewController, UIPageViewControllerDelegate, UIPag
         return orderedViewControllers[nextIndex]
     }
     
-    //gets total number of pages in page view, 01/08/23, Shahiel
+    //gets total number of pages in page view
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
             return orderedViewControllers.count
         }
     
-    //Sets pageviews current index, 01/08/23 Shahiel
+    //Sets pageviews current index
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
               let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {
