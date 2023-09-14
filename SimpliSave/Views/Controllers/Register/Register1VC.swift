@@ -30,7 +30,7 @@ class Register1VC: UIViewController {
     
     //MARK: -IBActions
     
-    //Validates user input and moves to next page on click, 25/07/23, Shahiel
+    //Validates user input and moves to next page on click
     @IBAction func btnNext(_ sender: Any) {
         if lblName.text == "" || lblSurname.text == "" {
             let alertController = UIAlertController(title: "Empty Field", message: "Please fill in both fields", preferredStyle: .alert)
@@ -42,7 +42,7 @@ class Register1VC: UIViewController {
                 present(alertController, animated: true, completion: nil)
         }else{
             
-            //if the fields are not empty, the entered data is saved to userDefault 02/08/2023 Robert
+            //if the fields are not empty, the entered data is saved to userDefault 
             let reg1=[lblName.text,lblSurname.text]
 
             if let data = try? NSKeyedArchiver.archivedData(withRootObject: reg1, requiringSecureCoding: false) {

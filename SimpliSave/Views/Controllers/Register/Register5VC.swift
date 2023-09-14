@@ -22,14 +22,14 @@ class Register5VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Customise the emTextField - Masana - 21/07/2023
+        // Customise the emTextField
         
         emailTextField.layer.borderWidth = 1.0
         emailTextField.layer.borderColor = UIColor(hex: "#850856")?.cgColor
         emailTextField.layer.cornerRadius = 15.0
         emailTextField.clipsToBounds = true
         
-       // Customise the cellTextField - Masana - 21/07/2023
+       // Customise the cellTextField
         
         cellTextField.layer.borderWidth = 1.0
         cellTextField.layer.borderColor = UIColor(hex: "#850856")?.cgColor
@@ -37,20 +37,20 @@ class Register5VC: UIViewController {
         cellTextField.clipsToBounds = true
         
         
-      // Customise the nextStep button - Masana - 21/07/2023
+      // Customise the nextStep button
         
         nextStep.layer.cornerRadius = 15.0 // Set the corner radius here
         nextStep.clipsToBounds = true // Ensures the corners are rounded
         nextStep.layer.backgroundColor = UIColor(hex: "#850856")?.cgColor
         
-      // Getting the registered userName to display - Masana - 07/08/2023
+      // Getting the registered userName to display
         
         if let user_Name = UserDefaults.standard.data(forKey: "reg1"), let name = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(user_Name) as? [String] {
             
             userName.text=name[0]
         }
         
-      // navigates to the next View Controller - Masana - 21/07/2023
+      // navigates to the next View Controller
         
         if let pageViewController = parent as? RegisterPageVC {
             pageViewController.setCount = false
@@ -62,13 +62,13 @@ class Register5VC: UIViewController {
     
     @IBAction func btnNext(_ sender: Any) {
         
-        // Check if emailTextField and cellTextField have values, otherwise show an alert - Masana - 25/07/2023
+        // Check if emailTextField and cellTextField have values, otherwise show an alert
         
         guard let email = emailTextField.text, let cellNumber = cellTextField.text else {
                     showAlert(message: "Please enter all fields")
                     return
                 }
-        // Check if emailTextField and cellTextField are not empty after trimming whitespace, otherwise show an alert - Masana - 25/07/2023
+        // Check if emailTextField and cellTextField are not empty after trimming whitespace, otherwise show an alert
         
         if email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
                    cellNumber.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -76,15 +76,14 @@ class Register5VC: UIViewController {
                    return
                }
         
-        // Check if the email is in a valid format using a regular expression pattern - Masana - 25/07/2023
-        
+        // Check if the email is in a valid format using a regular expression pattern
         let emailPattern = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
                 let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailPattern)
                 if !emailPredicate.evaluate(with: email) {
                     showAlert(message: "Please enter a valid email address.")
                     return
                 }
-        // Check if the cell number is in a valid format using a regular expression pattern - Masana - 25/07/2023
+        // Check if the cell number is in a valid format using a regular expression pattern
         
         let cellPattern = "^0\\d{9}$"
                 let cellPredicate = NSPredicate(format: "SELF MATCHES %@", cellPattern)
@@ -93,17 +92,6 @@ class Register5VC: UIViewController {
                     return
                 }
         
-        // Check if email is already registered - Masana - 07/08/2023
-        
-//        if let existingData = UserDefaults.standard.data(forKey: "reg5"),
-//                   let existingRegData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(existingData) as? [String],
-//                   let existingEmail = existingRegData.first,
-//                   existingEmail == email {
-//                    showAlert(message: "This email is already registered.")
-//                    return
-//                }
-        //if the fields are not empty, the entered data is saved to userDefault 02/08/2023 Robert
-
         let reg5=[emailTextField.text,cellTextField.text]
 
                 if let data = try? NSKeyedArchiver.archivedData(withRootObject: reg5, requiringSecureCoding: false) {

@@ -1,7 +1,7 @@
 // StudentTableViewCell.swift
 import UIKit
 
-//class for studentTableViewCell: 29/08/2023 | Rolva
+//class for studentTableViewCell
 class StudentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!

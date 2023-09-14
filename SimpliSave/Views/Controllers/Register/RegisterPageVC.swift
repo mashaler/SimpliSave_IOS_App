@@ -11,7 +11,7 @@ class RegisterPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPage
     
     var setCount = false
     
-    //Adds view controllers to array for the page view diplay and functionality, 24/07/23, Shahiel
+    //Adds view controllers to array for the page view diplay and functionality
     lazy var orderedViewControllers: [UIViewController] = {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
@@ -45,7 +45,7 @@ class RegisterPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPage
         print(setCount)
     }
     
-    //sets the view controller of the previous page, 24/07/23, Shahiel
+    //sets the view controller of the previous page
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = orderedViewControllers.firstIndex(of: viewController) else {return nil}
         
@@ -58,7 +58,7 @@ class RegisterPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPage
         return orderedViewControllers[previousIndex]
     }
     
-    //sets the view controller of the next page, 24/07/23, Shahiel
+    //sets the view controller of the next page
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = orderedViewControllers.firstIndex(of: viewController) else {return nil}
         
@@ -75,12 +75,12 @@ class RegisterPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPage
         }
     }
     
-    //gets total number of pages in page view, 24/07/23, Shahiel
+    //gets total number of pages in page view
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
             return orderedViewControllers.count
         }
     
-    //Sets pageviews current index, 01/08/23 Shahiel
+    //Sets pageviews current index
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
               let firstViewControllerIndex = orderedViewControllers.firstIndex(of: firstViewController) else {
@@ -90,7 +90,7 @@ class RegisterPageVC: UIPageViewController, UIPageViewControllerDelegate, UIPage
         return firstViewControllerIndex
     }
     
-    //Allows the page to only be changable after the current view controller has validatored user input as correct, 24/07/23, Shahiel
+    //Allows the page to only be changable after the current view controller has validatored user input as correct
     func changePage(to index: Int, animated: Bool = true) {
         
         guard index >= 0 && index < orderedViewControllers.count else {

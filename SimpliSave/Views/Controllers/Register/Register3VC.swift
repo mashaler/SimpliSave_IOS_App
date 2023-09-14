@@ -28,7 +28,7 @@ class Register3VC: UIViewController {
     
     //MARK: - IBActions
     
-    //Validates user input and moves to next page on click, 25/07/23, Shahiel
+    //Validates user input and moves to next page on click
     @IBAction func btnNext(_ sender: Any) {
         if lblVerified.text == "" {
             let alertController = UIAlertController(title: "Cannot link to account", message: "Please fill in your online banking details or ensure they are correct", preferredStyle: .alert)
@@ -39,7 +39,7 @@ class Register3VC: UIViewController {
                 
                 present(alertController, animated: true, completion: nil)
         }else{
-            //if the fields are not empty, the entered data is saved to userDefault 02/08/2023 Robert
+            //if the fields are not empty, the entered data is saved to userDefault
 
             let reg3=[lblVerified.text]
             
@@ -56,7 +56,7 @@ class Register3VC: UIViewController {
        
     }
     
-    //displays alert to enter username and password for banking details, 25/07/23, Shahiel
+    //displays alert to enter username and password for banking details
     @IBAction func btnEnter(_ sender: Any) {
         let alertController = UIAlertController(title: "Enter Input", message: nil, preferredStyle: .alert)
         

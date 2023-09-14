@@ -20,13 +20,13 @@ class Register4VC: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
         navigationController?.navigationBar.tintColor = UIColor.black
-        IDTextField.layer.borderWidth = 1.0 // Set the border width to make it bold | Rolva
+        IDTextField.layer.borderWidth = 1.0 // Set the border width to make it bold
         IDTextField.layer.borderColor = UIColor(hex: "#850856")?.cgColor  // Set the border color to orange | Rolva
         IDTextField.layer.cornerRadius = 15.0
         IDTextField.clipsToBounds = true
 
-        CreateSavingsAccount.layer.cornerRadius = 15.0 // Set the corner radius here | Rolva
-        CreateSavingsAccount.clipsToBounds = true // Ensures the corners are rounded | Rolva
+        CreateSavingsAccount.layer.cornerRadius = 15.0 // Set the corner radius here
+        CreateSavingsAccount.clipsToBounds = true // Ensures the corners are rounded
         
         view.addSubview(IDTextField)
         view.addSubview(CreateSavingsAccount)
@@ -41,7 +41,7 @@ class Register4VC: UIViewController, UINavigationControllerDelegate {
         switch status {
         case .authorized:
             print("granted")
-            // Camera access is granted. You can use the camera. | Rolva
+            // Camera access is granted. You can use the camera.
             let picker = UIImagePickerController()
             picker.sourceType = .camera
             picker.allowsEditing = true
@@ -50,18 +50,18 @@ class Register4VC: UIViewController, UINavigationControllerDelegate {
             setupCamera()
             break
         case .notDetermined:
-            // Camera access is not determined yet. You can request it here. | Rolva
+            // Camera access is not determined yet. You can request it here.
             AVCaptureDevice.requestAccess(for: .video) { granted in
                 if granted {
-                    // Camera access granted. You can use the camera. | Rolva
+                    // Camera access granted. You can use the camera.
                 } else {
                     print("dienied")
-                    // Camera access denied. Handle this case. | Rolva
+                    // Camera access denied. Handle this case.
                 }
             }
         case .denied, .restricted:
             print("denied")
-            // Camera access is denied or restricted. Handle this case. | Rolva
+            // Camera access is denied or restricted. Handle this case.
             break
         @unknown default:
             break
@@ -95,7 +95,7 @@ class Register4VC: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    // function to control what happens when u click viewWillDisappear: 19/07/2023, Rolva
+    // function to control what happens when u click viewWillDisappear
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         captureSession?.stopRunning()
@@ -107,7 +107,7 @@ class Register4VC: UIViewController, UINavigationControllerDelegate {
     }
 
 
-    // function to control what happens when u click btnnext: 19/07/2023, Rolva
+    // function to control what happens when u click btnnext
     @IBAction func btnNext(_ sender: Any) {
         let idNumber = IDTextField.text!
 
@@ -146,7 +146,7 @@ func validateSouthAfricanID(idNumber: String) -> Bool {
     return matches.count == 1
 }
 
-// Extension to convert hex color to UIColor, : 18/07/2023 | Rolva
+// Extension to convert hex color to UIColor
 extension UIColor {
     convenience init?(hex: String) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -163,7 +163,7 @@ extension UIColor {
     }
 }
 
-//code to control the behavior of the camera: 18/07/2023 | Rolva
+//code to control the behavior of the camera
 extension Register4VC: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true,completion: nil)

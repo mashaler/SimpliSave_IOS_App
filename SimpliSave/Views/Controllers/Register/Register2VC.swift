@@ -29,14 +29,14 @@ class Register2VC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         lblBank.clipsToBounds = true
         lblBank.layer.backgroundColor = (UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)).cgColor
         
-        // Getting the registered userName to display - Masana - 07/08/2023
+        // Getting the registered userName to display
         
         if let user_Name = UserDefaults.standard.data(forKey: "reg1"), let name = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(user_Name) as? [String] {
             
             userName.text=name[0]
         }
         
-        //sets he page to false so that it cannot be accessed, 25/07/23, Shahiel
+        //sets he page to false so that it cannot be accessed
         if let pageViewController = parent as? RegisterPageVC {
             pageViewController.setCount = false
             print(pageViewController.setCount)
@@ -49,7 +49,7 @@ class Register2VC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     //MARK: - IBActions
     
-    //hides and unhides the picker view, 25/07/23, Shahiel
+    //hides and unhides the picker view
     @IBAction func btnSelect(_ sender: Any) {
         if setState == false{
             pickerView.layer.isHidden = false
@@ -61,7 +61,7 @@ class Register2VC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     }
     
-    //Validates user input and moves to next page on click, 25/07/23, Shahiel
+    //Validates user input and moves to next page on click
     @IBAction func btnNext(_ sender: Any) {
         if lblBank.text == "" {
             print("empty")
@@ -73,7 +73,7 @@ class Register2VC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 
                 present(alertController, animated: true, completion: nil)
         }else{
-            //if the fields are not empty, the entered data is saved to userDefault 02/08/2023 Robert
+            //if the fields are not empty, the entered data is saved to userDefault
 
             let reg2=[lblBank.text]
             
@@ -96,22 +96,22 @@ class Register2VC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
 extension Register2VC {
     
-    //sets number of columns for pickerview, 25/07/23, Shahiel
+    //sets number of columns for pickerview
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    //sets number of rows in pickerview, 25/07/23, Shahiel
+    //sets number of rows in pickerview
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return dropdownData.count
     }
     
-    //gets dat for picker view from array, 25/07/23, Shahiel
+    //gets dat for picker view from array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dropdownData[row]
     }
     
-    //gets the selected option and displays it in a label, 25/07/23, Shahiel
+    //gets the selected option and displays it in a label
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedOption = dropdownData[row]
         lblBank.text = selectedOption

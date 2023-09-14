@@ -20,27 +20,27 @@ class Register6VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        // Customise the passwordTextField - Masana - 21/07/2023
+        // Customise the passwordTextField
         
            passwordTextField.layer.borderWidth = 1.0
            passwordTextField.layer.borderColor = UIColor(hex: "#850856")?.cgColor
            passwordTextField.layer.cornerRadius = 15.0
            passwordTextField.clipsToBounds = true
           
-        // Customise the confrimPassword - Masana - 21/07/2023
+        // Customise the confrimPassword
         
            confirmPassword.layer.borderWidth = 1.0
            confirmPassword.layer.borderColor = UIColor(hex: "#850856")?.cgColor
            confirmPassword.layer.cornerRadius = 15.0
            confirmPassword.clipsToBounds = true
            
-        // Customize the endStep button - Masana - 21/07/2023
+        // Customize the endStep button
         
            endStep.layer.cornerRadius = 15.0
            endStep.clipsToBounds = true
            endStep.layer.backgroundColor = UIColor(hex: "#850856")?.cgColor
         
-       // Call septup password and confirm password to secure textfielfds - Masana - 07/08/2023
+       // Call septup password and confirm password to secure textfielfds
         
         setupPasswordTextField()
         setupConfirmPasswordTextField()
@@ -48,24 +48,24 @@ class Register6VC: UIViewController {
     }
     func setupPasswordTextField() {
         
-        // Creates a view to hold the password toggle icon - Masana - 07/08/2023
+        // Creates a view to hold the password toggle icon
         
             let passwordRightView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
             let passwordContentView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 24))
             
-        // Creates an image view for the password toggle icon - Masana - 07/08/2023
+        // Creates an image view for the password toggle icon
         
             passwordToggleImageView = UIImageView(image: UIImage(named: "closedeye"))
             passwordToggleImageView.contentMode = .scaleAspectFit
             passwordToggleImageView.frame = CGRect(x: 6, y: 0, width: 24, height: 24)
             passwordContentView.addSubview(passwordToggleImageView)
             
-        // Adds a tap gesture recognizer to toggle the password visibility - Masana - 07/08/2023
+        // Adds a tap gesture recognizer to toggle the password visibility
         
             let passwordTapGesture = UITapGestureRecognizer(target: self, action: #selector(passwordToggleTapped))
             passwordContentView.addGestureRecognizer(passwordTapGesture)
         
-        // Puts the password toggle icon view and add it as the right view of the password field - Masana - 07/08/2023
+        // Puts the password toggle icon view and add it as the right view of the password field
         
             passwordRightView.addSubview(passwordContentView)
             passwordTextField.rightView = passwordRightView
@@ -74,7 +74,7 @@ class Register6VC: UIViewController {
         }
     func setupConfirmPasswordTextField() {
         
-        // Creates a view to hold the confirm password toggle icon - Masana - 07/08/2023
+        // Creates a view to hold the confirm password toggle icon
         
             let confirmPasswordRightView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: 24))
             let confirmPasswordContentView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 24))
@@ -86,12 +86,12 @@ class Register6VC: UIViewController {
             confirmPasswordToggleImageView.frame = CGRect(x: 6, y: 0, width: 24, height: 24)
             confirmPasswordContentView.addSubview(confirmPasswordToggleImageView)
         
-        // Adds a tap gesture recognizer to toggle the confirm password visibility - Masana - 07/08/2023
+        // Adds a tap gesture recognizer to toggle the confirm password visibility
         
             let confirmPasswordTapGesture = UITapGestureRecognizer(target: self, action: #selector(confirmPasswordToggleTapped))
             confirmPasswordContentView.addGestureRecognizer(confirmPasswordTapGesture)
             
-        // Puts the confirm password toggle icon view and add it as the right view of the confirm password field - Masana - 07/08/2023
+        // Puts the confirm password toggle icon view and add it as the right view of the confirm password field
         
             confirmPasswordRightView.addSubview(confirmPasswordContentView)
             confirmPassword.rightView = confirmPasswordRightView
@@ -99,15 +99,14 @@ class Register6VC: UIViewController {
             confirmPassword.isSecureTextEntry = true
         }
     
-    // Function to toggle the visibility of the password text in the passwordTextField - Masana - 03/08/2023
-    
+    // Function to toggle the visibility of the password text in the passwordTextField
     @objc func passwordToggleTapped() {
             passwordTextField.isSecureTextEntry.toggle()
             let imageName = passwordTextField.isSecureTextEntry ? "closedeye" : "openeye"
             passwordToggleImageView.image = UIImage(named: imageName)
         }
         
-    // Function to toggle the visibility of the password text in the confrimPassword - Masana - 03/08/2023
+    // Function to toggle the visibility of the password text in the confrimPassword
     
         @objc func confirmPasswordToggleTapped() {
             confirmPassword.isSecureTextEntry.toggle()
@@ -115,10 +114,10 @@ class Register6VC: UIViewController {
             confirmPasswordToggleImageView.image = UIImage(named: imageName)
         }
     
-    // Function called when the endStep button is tapped - Masana -  25/07/2023
+    // Function called when the endStep button is tapped
     
     @IBAction func endReg(_ sender: Any) {
-        // Check if both password and confirmPassword fields are filled, otherwise show an alert - Masana - 25/07/2023
+        // Check if both password and confirmPassword fields are filled, otherwise show an alert
         guard let password = passwordTextField.text,
               let confirm_Password = confirmPassword.text else {
             showAlert(message: "Please fill in all fields.")
@@ -128,20 +127,20 @@ class Register6VC: UIViewController {
             showAlert(message: "Please fill in all fields.")
             return
         }
-        // Check if the password is valid according to a specific pattern, otherwise show an alert - Masana - 25/07/2023
+        // Check if the password is valid according to a specific pattern, otherwise show an alert
         
         if !isValidPassword(password) {
             showAlert(message: "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.")
             return
         }
-        // Check if the password and confirmPassword match, otherwise show an alert - Masana - 25/07/2023
+        // Check if the password and confirmPassword match, otherwise show an alert
         
         if password != confirm_Password {
             showAlert(message: "Passwords do not match.")
             return
         }
         
-        //if the fields are not empty, the entered data is saved to userDefault 02/08/2023 Robert
+        //if the fields are not empty, the entered data is saved to userDefault
         
         let reg6=[passwordTextField.text,confirmPassword.text]
         
@@ -161,7 +160,7 @@ class Register6VC: UIViewController {
         var uPassword=""
         let date = Date()
         
-        //getting current date in this format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" Robert 15/08/2023
+        //getting current date in this format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         dateFormatter.timeZone = TimeZone(identifier: "UTC+2")
@@ -203,18 +202,6 @@ class Register6VC: UIViewController {
         print("Password: "+password)
         print("date: "+formattedDate)
         
-        /*
-         created 10 08 2023
-         updated: 15 08 2023
-         Dev: Robert
-         Function name:Register
-         Description: Calling the register function and passing data.
-         */
-//        let authViewModel = registerDataService()
-//
-//
-//        authViewModel.register(firstName: firstName, lastName: lastName, cellphoneNumber: cellPhoneNumber, email: userEmailA, idNo: idNo, password: password, createdAt: formattedDate, updatedAt: formattedDate)
-        
         let authViewModel = registerDataService()
 
         authViewModel.register(firstName: firstName, lastName: lastName, cellphoneNumber: cellPhoneNumber, email: userEmailA, idNo: idNo, password: password, createdAt: formattedDate, updatedAt: formattedDate) { result in
@@ -243,27 +230,6 @@ class Register6VC: UIViewController {
             }
         }
         
-
-        
-        
-        /*
-         saving data to json files robert 25/08/2023
-         */
-//        let viewModel = uViewModel()
-//
-//        //passing data to the function to be saved to the Json file Robert 25 08 2023
-//        viewModel.setUserDetails(firstName: firstName, lastName: lastName, cellphoneNumber: cellPhoneNumber, email: userEmailA, idNo: idNo, password: password, createdAt: formattedDate, updatedAt: formattedDate)
-//
-//
-//        //error handling
-//        viewModel.saveData { error in
-//            if let error = error {
-//                print("Error saving data: \(error)")
-//            } else {
-//                print("Data saved successfully.")
-//            }
-//
-//        }
         
     }
     
@@ -274,14 +240,14 @@ class Register6VC: UIViewController {
     }
     
     
-    // Function to validate the password against a specific pattern using a regular expression - Masana - 25/08/2023
+    // Function to validate the password against a specific pattern using a regular expression
     
     private func isValidPassword(_ password: String) -> Bool {
            let passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"
            let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
            return passwordPredicate.evaluate(with: password)
        }
-    // Function to show an alert with the given message - Masana - 25/07/2023
+    // Function to show an alert with the given message 
     
     private func showAlert(message: String) {
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
